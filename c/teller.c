@@ -8,18 +8,6 @@ int SECONDS_IN_DAY = 86400;
 int SECONDS_IN_HOUR = 3600;
 int SECONDS_IN_MINUTE = 60;
 
-int get_user_input()
-{
-    int val;
-    do
-    {
-        printf("Hoeveel seconden moeten er omgerekend worden? \x1b[32m");
-        scanf("%d", &val);
-        printf("\x1b[0m");
-    } while (val <= 0ul);
-    return val;
-}
-
 typedef struct
 {
     int years;
@@ -47,6 +35,18 @@ Parts calculate_parts(int seconds)
     parts.seconds = seconds % SECONDS_IN_MINUTE;
 
     return parts;
+}
+
+int get_user_input()
+{
+    int val;
+    do
+    {
+        printf("Hoeveel seconden moeten er omgerekend worden? \x1b[32m");
+        scanf("%d", &val);
+        printf("\x1b[0m");
+    } while (val <= 0ul);
+    return val;
 }
 
 void print_count(int val, char *singular, char *plural)
