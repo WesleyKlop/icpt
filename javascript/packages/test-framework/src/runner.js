@@ -3,7 +3,7 @@ import { TestContext } from './test.js'
 
 export async function runTestFile(name, test, options = {}) {
   try {
-    const result = test()
+    const result = test(options.args)
     if (result instanceof Promise) {
       await result
     }
@@ -32,6 +32,7 @@ export async function executeTestsInContext(context) {
   await context.executeBeforeAll()
 
   for (const [name, test, options] of context.tests) {
+    // This could be edited to have a timeout, retries, etc.
     await context.executeBeforeEach()
     const succeeded = await runTestFile(name, test, options)
 

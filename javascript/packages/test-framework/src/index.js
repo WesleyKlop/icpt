@@ -4,7 +4,7 @@ import { discoverTestFiles } from './discovery.js'
 import { executeTestsInContext } from './runner.js'
 
 const printTestResults = (resultsByFile) => {
-  console.log('\nSUMMARY\n-------')
+  console.log('\n\nSUMMARY\n-------')
   for (const [file, results] of resultsByFile.entries()) {
     console.log(
       `[${file}] ${results.succeeded}/${results.total} succeeded. ${results.failed} failed.`,

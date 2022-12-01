@@ -8,6 +8,19 @@ export function assertEquals(expected, actual, strict = true) {
   }
 }
 
+export function assertDeepEquals(expected, actual, strict = true) {
+  const keys = new Set(Object.keys(expected).concat(Object.keys(actual)))
+
+  for (const key of keys) {
+    if (typeof expected[key] === 'object') {
+      assertDeepEquals(expected[key], actual[key], strict)
+      // TODO: Handle arrays
+    } else {
+      assertEquals(expected[key], actual[key], strict)
+    }
+  }
+}
+
 export function assertTrue(actual, strict = true) {
   assertEquals(true, actual, strict)
 }

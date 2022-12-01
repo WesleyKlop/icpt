@@ -7,8 +7,14 @@ export const it = (name, test, options) => {
   currentTestContext.tests.add([name, test, options])
 }
 
+it.each = (argsList) => (name, test, options) => {
+  for (const args of argsList) {
+    currentTestContext.tests.add([name, test, { ...options, args }])
+  }
+}
+
 export const beforeEach = (cb) => (currentTestContext.beforeEach = cb)
-export const beforeAll = (cb) => (currentTestContext.afterAll = cb)
+export const beforeAll = (cb) => (currentTestContext.beforeAll = cb)
 export const afterEach = (cb) => (currentTestContext.afterEach = cb)
 export const afterAll = (cb) => (currentTestContext.afterAll = cb)
 

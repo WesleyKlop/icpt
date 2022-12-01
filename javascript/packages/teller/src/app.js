@@ -9,6 +9,12 @@ const SECONDS_IN_DAY = 86400
 const SECONDS_IN_HOUR = 3600
 const SECONDS_IN_MINUTE = 60
 
+export class InvalidInputError extends Error {
+  constructor(input) {
+    super(`Invalid input "${input}"`)
+  }
+}
+
 export const getUserInput = (streams = process) => {
   const readline = createInterface({
     input: streams.stdin,
@@ -21,7 +27,7 @@ export const getUserInput = (streams = process) => {
 
       readline.close()
       if (Number.isNaN(asNumber) || input < 0) {
-        rej(new Error(`Invalid input "${input}"`))
+        rej(new InvalidInputError(input))
       }
       res(asNumber)
     })
