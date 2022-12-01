@@ -1,0 +1,11 @@
+{
+  "type": "module",
+  "scripts": {
+    "test": "test-framework packages/teller"
+  },
+  "workspaces": [
+    "packages/test-framework",
+    "packages/teller",
+    "packages/shared"
+  ]
+}

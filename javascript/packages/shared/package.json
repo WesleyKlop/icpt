@@ -1,0 +1,7 @@
+{
+  "name": "@icpt/shared",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.js"
+  }
+}

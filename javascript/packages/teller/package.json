@@ -1,0 +1,10 @@
+{
+  "name": "@icpt/teller",
+  "type": "module",
+  "exports": {
+    ".": null
+  },
+  "bin": {
+    "teller": "./bin/teller.js"
+  }
+}

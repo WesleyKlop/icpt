@@ -1,0 +1,10 @@
+{
+  "name": "@icpt/test-framework",
+  "type": "module",
+  "exports": {
+    ".": "./src/exports.js"
+  },
+  "bin": {
+    "test-framework": "./bin/test-framework.js"
+  }
+}

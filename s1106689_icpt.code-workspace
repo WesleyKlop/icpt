@@ -1,0 +1,24 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    { "path": "c" },
+    { "path": "javascript" }
+  ],
+  "settings": {
+    "workbench.colorTheme": "Default Light+",
+    "editor.fontFamily": "\"Source Code Pro\", \"JetbrainsMono Nerd Font\", monospace",
+    "editor.fontSize": 12,
+    "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "**/Thumbs.db": true,
+      "c": true,
+      "javascript": true
+    }
+  }
+}
