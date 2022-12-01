@@ -1,6 +1,7 @@
 import path from 'node:path'
-import { discoverTestFiles, discoverTestsInFile } from './registry.js'
-import { runTestFile } from './runner.js'
+import { createTestContext } from './context.js'
+import { discoverTestFiles } from './discovery.js'
+import { executeTestsInContext } from './runner.js'
 
 const printTestResults = (resultsByFile) => {
   console.log('\nSUMMARY\n-------')
@@ -19,16 +20,9 @@ const printTestResults = (resultsByFile) => {
 export const startTestSuite = async (folder) => {
   const fileResults = new Map()
   for await (const file of discoverTestFiles(folder)) {
-    const results = { succeeded: 0, failed: 0, total: 0 }
-    for await (const [name, test, options] of discoverTestsInFile(file)) {
-      const succeeded = await runTestFile(name, test, options)
-      results.total++
-      if (succeeded === true) {
-        results.succeeded++
-      } else {
-        results.failed++
-      }
-    }
+    const context = await createTestContext(file)
+    const results = await executeTestsInContext(context)
+
     fileResults.set(path.relative('.', file), results)
   }
 

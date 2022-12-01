@@ -2,7 +2,7 @@
   "name": "icpt",
   "type": "module",
   "scripts": {
-    "test": "test-framework packages/teller"
+    "test": "test-framework packages"
   },
   "workspaces": [
     "packages/test-framework",

@@ -1,5 +1,6 @@
 {
   "npm.packageManager": "npm",
   "javascript.format.semicolons": "remove",
-  "javascript.preferences.importModuleSpecifierEnding": "js"
+  "javascript.preferences.importModuleSpecifierEnding": "js",
+  "editor.tabSize": 2
 }
