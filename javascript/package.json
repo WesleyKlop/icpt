@@ -1,4 +1,5 @@
 {
+  "name": "icpt",
   "type": "module",
   "scripts": {
     "test": "test-framework packages/teller"
@@ -7,5 +8,9 @@
     "packages/test-framework",
     "packages/teller",
     "packages/shared"
-  ]
+  ],
+  "volta": {
+    "node": "18.12.1",
+    "npm": "9.1.3"
+  }
 }
