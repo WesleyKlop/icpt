@@ -28,7 +28,7 @@ export const getUserInput = (streams = process) => {
   })
 }
 
-const calculate = (seconds) => {
+export const calculate = (seconds) => {
   const parts = {}
   parts.years = Math.floor(seconds / SECONDS_IN_YEAR)
   seconds = seconds % SECONDS_IN_YEAR
@@ -44,9 +44,9 @@ const calculate = (seconds) => {
   return parts
 }
 
-const format = (val, singular, plural) => `${val} ${val === 1 ? singular : plural}`
+export const format = (val, singular, plural) => `${val} ${val === 1 ? singular : plural}`
 
-const formatParts = (parts) =>
+export const formatParts = (parts) =>
   `${format(parts.years, 'jaar', 'jaren')}, ${format(parts.months, 'maand', 'maanden')}, ${format(
     parts.days,
     'dag',

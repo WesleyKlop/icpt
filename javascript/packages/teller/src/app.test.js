@@ -15,3 +15,4 @@ it('Returns a valid number when giving valid input', async () => {
 
   assertEquals(expected, actual)
 })
+

@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'node:path'
 import { discoverTestFiles, discoverTestsInFile } from './registry.js'
 import { runTestFile } from './runner.js'
 

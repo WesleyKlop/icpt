@@ -1,6 +1,6 @@
-import { argv } from 'process'
-import { fileURLToPath } from 'url'
-import { realpath } from 'fs/promises'
+import { argv } from 'node:process'
+import { fileURLToPath } from 'node:url'
+import { realpath } from 'node:fs/promises'
 
 export async function isMain(moduleUrl) {
   const modulePath = fileURLToPath(moduleUrl)
