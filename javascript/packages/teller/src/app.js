@@ -1,5 +1,5 @@
-import { createInterface } from 'readline'
-import { isMain } from '@icpt/shared'
+import process from 'node:process'
+import { createInterface } from 'node:readline'
 
 // Assume it is not a leap year
 const SECONDS_IN_YEAR = 31540000
@@ -9,19 +9,19 @@ const SECONDS_IN_DAY = 86400
 const SECONDS_IN_HOUR = 3600
 const SECONDS_IN_MINUTE = 60
 
-const getUserInput = () => {
+export const getUserInput = (streams = process) => {
   const readline = createInterface({
-    input: process.stdin,
-    output: process.stdout,
+    input: streams.stdin,
+    output: streams.stdout,
   })
-  return new Promise((res) => {
+  return new Promise((res, rej) => {
     readline.question('Hoeveel seconden moeten er omgerekend worden? \x1b[32m', (input) => {
       process.stdout.write('\x1b[0m')
       const asNumber = parseInt(input, 10)
 
       readline.close()
       if (Number.isNaN(asNumber) || input < 0) {
-        res(new Error(`Invalid input "${input}"`))
+        rej(new Error(`Invalid input "${input}"`))
       }
       res(asNumber)
     })
@@ -59,9 +59,6 @@ const formatParts = (parts) =>
 
 export const main = async () => {
   const input = await getUserInput()
-  if (input instanceof Error) {
-    throw input
-  }
 
   const parts = calculate(input)
 

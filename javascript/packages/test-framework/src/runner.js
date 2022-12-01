@@ -1,4 +1,4 @@
-import { AssertionError } from './assertions.js'
+import { TestError } from './errors.js'
 
 export async function runTestFile(name, test, options = {}) {
   try {
@@ -15,6 +15,9 @@ export async function runTestFile(name, test, options = {}) {
     // console.log(' - expected:', err.a)
     // console.log(' -   actual:', err.b)
     // }
+    if (!(err instanceof TestError)) {
+      throw err
+    }
   }
   return false
 }

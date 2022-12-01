@@ -1,2 +1,3 @@
 export { it } from './registry.js'
-export { assertEquals } from './assertions.js'
+export * from './assertions.js'
+export * from './mock.js'
