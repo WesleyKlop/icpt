@@ -1,11 +1,5 @@
 {
-  "folders": [
-    {
-      "path": "."
-    },
-    { "path": "c" },
-    { "path": "javascript" }
-  ],
+  "folders": [{ "path": "." }, { "path": "c" }, { "path": "javascript" }],
   "settings": {
     "workbench.colorTheme": "Default Light+",
     "editor.fontFamily": "\"Source Code Pro\", \"JetbrainsMono Nerd Font\", monospace",
@@ -19,6 +13,9 @@
       "**/Thumbs.db": true,
       "c": true,
       "javascript": true
+    },
+    "terminal.integrated.env.linux": {
+      "BAT_THEME": "github"
     }
   }
 }
