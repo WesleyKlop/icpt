@@ -27,6 +27,7 @@ var Menu = new Dictionary<string, MenuOption>()
     { "3", () => { isAskingQuestions = false; }}
 };
 
+#pragma warning disable CS8604 // this is expected and handled behavior
 while (isAskingQuestions)
 {
     Console.WriteLine(@"
@@ -38,7 +39,6 @@ Kies optie:
 ".Trim());
     var choice = Console.ReadLine();
 
-    Console.WriteLine("Current instructions length: {0}", instructions.Count);
     try
     {
         Menu[choice]();
@@ -49,7 +49,13 @@ Kies optie:
         Console.WriteLine("Unknown option chosen");
         continue;
     }
+    catch (ArgumentNullException)
+    {
+        Console.WriteLine("Failed to receive input. ");
+        Environment.Exit(1);
+    }
 }
+#pragma warning restore CS8604
 
 // Execute all instructions and show the progress between each step.
 printTriangleInfo(subject);
