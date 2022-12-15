@@ -1,9 +1,12 @@
 {
   "folders": [
-    { "path": "." },
-    { "path": "c" },
-    { "path": "c-sharp" },
-    { "path": "javascript" }
+    { "path": ".", "name": "ICPT" },
+    { "path": "c", "name": "C" },
+    { "path": "javascript", "name": "JavaScript" },
+    { "path": "c-sharp", "name": "C#" },
+    { "path": "c-plusplus", "name": "C++" },
+    { "path": "go", "name": "Go" },
+    { "path": "scala", "name": "Scala" }
   ],
   "settings": {
     "workbench.colorTheme": "Default Light+",
@@ -16,9 +19,11 @@
       "**/CVS": true,
       "**/.DS_Store": true,
       "**/Thumbs.db": true,
-      "c": true,
       "javascript": true,
-      "c-sharp": true
+      "c-plusplus": true,
+      "c-sharp": true,
+      "go": true,
+      "c": true
     },
     "terminal.integrated.env.linux": {
       "BAT_THEME": "github"

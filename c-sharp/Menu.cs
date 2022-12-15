@@ -1,1 +1,1 @@
-public delegate void MenuOption();
+delegate void MenuOption();
