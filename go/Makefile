@@ -18,6 +18,5 @@ bin:
 	@mkdir -p bin
 
 bin/%: cmd/%/main.go bin $(wildcard internal/**/*.go) go.*
-	echo "Building $@"
     # Use CGO_ENABLED=0 to build a static binary.
 	CGO_ENABLED=0 go build -o $@ github.com/wesleyklop/icpt/go/v2/$(dir $<)
