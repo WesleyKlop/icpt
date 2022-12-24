@@ -22,7 +22,7 @@ func (i *Input) Validate() Result {
 	case "Day":
 		return Result{
 			Unit:  i.Unit,
-			Valid: ValidateDay(i.Value, i.Year.Value, i.Month.Value),
+			Valid: ValidateDay(i.Value, i.Month.Value, i.Year.Value),
 		}
 	case "Hour":
 		return Result{
