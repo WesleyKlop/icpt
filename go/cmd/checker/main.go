@@ -19,7 +19,7 @@ func main() {
 			results <- inp.Validate()
 		}(inp)
 	}
-	// Wait for the goroutines to finish, then close the channel and print the results
+
 	wg.Wait()
 	close(results)
 

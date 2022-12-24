@@ -3,22 +3,24 @@
 #include <map>
 #include <format>
 
-void print(std::string message)
+using namespace std;
+
+void print(string message)
 {
-    std::cout << message;
+    cout << message;
 }
-void println(std::string message)
+void println(string message)
 {
-    std::cout << message << std::endl;
+    cout << message << endl;
 }
 
-std::string get_user_input(std::string message)
+string get_user_input(string message)
 {
-    std::string input;
+    string input;
     do
     {
         print(message + "\x1b[32m");
-        std::getline(std::cin, input);
+        getline(cin, input);
         print("\x1b[0m");
         if (input != "")
             return input;
@@ -26,17 +28,17 @@ std::string get_user_input(std::string message)
     } while (true);
 }
 
-int get_user_input_int(std::string message)
+int get_user_input_int(string message)
 {
     int result = 0;
     do
     {
-        std::string input = get_user_input(message);
+        string input = get_user_input(message);
         try
         {
-            result = std::stoi(input);
+            result = stoi(input);
         }
-        catch (const std::invalid_argument &e)
+        catch (const invalid_argument &e)
         {
             println("Input moet een geheel getal zijn");
         }
@@ -64,7 +66,7 @@ int get_year()
     }
 }
 
-const std::map<std::string, int> months = {
+const map<string, int> months = {
     {"januari", 31},
     {"februari", 28},
     {"maart", 31},
@@ -79,9 +81,9 @@ const std::map<std::string, int> months = {
     {"december", 31},
 };
 
-std::string get_month()
+string get_month()
 {
-    std::string month;
+    string month;
     while (true)
     {
         month = get_user_input("Maand: ");
@@ -92,7 +94,7 @@ std::string get_month()
     }
 }
 
-int get_day(int year, std::string month)
+int get_day(int year, string month)
 {
     int day = 0;
     int daysInMonth = months.at(month);
@@ -106,7 +108,7 @@ int get_day(int year, std::string month)
         if (day <= 0)
             println("Dag moet meer zijn dan 0");
         else if (day > daysInMonth)
-            println("Dag moet minder zijn dan " + std::to_string(daysInMonth));
+            println("Dag moet minder zijn dan " + to_string(daysInMonth));
         else
             break;
     }
@@ -144,14 +146,14 @@ int get_minute()
     return minute;
 }
 
-std::string fmt_count(int val, std::string singular, std::string plural)
+string fmt_count(int val, string singular, string plural)
 {
-    return std::to_string(val) + " " + (val == 1 ? singular : plural);
+    return to_string(val) + " " + (val == 1 ? singular : plural);
 }
 
-void print_result(int year, std::string month, int day, int hour, int minute)
+void print_result(int year, string month, int day, int hour, int minute)
 {
-    std::cout
+    cout
         << fmt_count(year, "jaar", "jaren")
         << ", "
         << month
@@ -161,31 +163,31 @@ void print_result(int year, std::string month, int day, int hour, int minute)
         << fmt_count(hour, "uur", "uren")
         << ", "
         << fmt_count(minute, "minuut", "minuten")
-        << std::endl;
+        << endl;
 
     println("Of in RFC3339 (ISO8601)");
-    int monthNum = std::distance(months.begin(), months.find(month)) - 1;
+    int monthNum = distance(months.begin(), months.find(month)) - 1;
 
-    std::cout
-        << std::to_string(year)
+    cout
+        << to_string(year)
         << "-"
         << (monthNum < 10 ? "0" : "")
-        << std::to_string(monthNum)
+        << to_string(monthNum)
         << "-"
-        << std::to_string(day)
+        << to_string(day)
         << "T"
-        << std::to_string(hour)
+        << to_string(hour)
         << ":"
-        << std::to_string(minute)
+        << to_string(minute)
         << ":00Z"
-        << std::endl;
+        << endl;
 }
 
 int main(int argc, char *argv[])
 {
     println("Het grote datum input programma wat vooral groot is omdat het in \x1b[1m\x1b[31mC++\x1b[0m is geschreven.");
     int year = get_year();
-    std::string month = get_month();
+    string month = get_month();
     int day = get_day(year, month);
     int hour = get_hour();
     int minute = get_minute();
