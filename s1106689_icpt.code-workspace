@@ -27,6 +27,9 @@
     },
     "terminal.integrated.env.linux": {
       "BAT_THEME": "github"
+    },
+    "files.associations": {
+      "iosfwd": "cpp"
     }
   }
 }
