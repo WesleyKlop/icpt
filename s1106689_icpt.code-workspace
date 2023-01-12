@@ -5,7 +5,8 @@
     { "path": "javascript", "name": "JavaScript" },
     { "path": "c-sharp", "name": "C#" },
     { "path": "c-plusplus", "name": "C++" },
-    { "path": "go", "name": "Go" }
+    { "path": "go", "name": "Go" },
+    { "path": "scala", "name": "Scala" }
   ],
   "settings": {
     "workbench.colorTheme": "Default Light+",
@@ -22,13 +23,14 @@
       "c-plusplus": true,
       "c-sharp": true,
       "go": true,
-      "c": true
+      "c": true,
+      "scala": true
     },
     "terminal.integrated.env.linux": {
       "BAT_THEME": "github"
     },
-    "files.associations": {
-      "iosfwd": "cpp"
+    "files.watcherExclude": {
+      "**/target": true
     }
   }
 }
