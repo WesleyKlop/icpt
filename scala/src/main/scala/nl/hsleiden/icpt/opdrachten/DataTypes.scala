@@ -24,9 +24,9 @@ object DataTypes {
   def hoeveelheidHonden(dieren: Seq[Dier]): Int = {
     @tailrec
     def hoeveelheidHonden(dieren: Seq[Dier], acc: Int): Int = dieren match {
-      case Hond :: tail => hoeveelheidHonden(tail, acc + 1)
-      case _ :: tail    => hoeveelheidHonden(tail, acc)
-      case Nil          => acc
+      case Hond(_, _, _) :: tail => hoeveelheidHonden(tail, acc + 1)
+      case _ :: tail             => hoeveelheidHonden(tail, acc)
+      case Nil                   => acc
     }
 
     hoeveelheidHonden(dieren, 0)
@@ -39,10 +39,10 @@ object DataTypes {
     */
   def hoeveelHeidHondenZijnEen(dieren: Seq[Dier]): Int = {
     @tailrec
-    def hoeveelheidHondenZijnEen(dieren: Seq[Dier], acc: Int): Int =
+    def hoeveelHeidHondenZijnEen(dieren: Seq[Dier], acc: Int): Int =
       dieren match {
-        case Hond(_, _, 1) :: tail => hoeveelheidHondenZijnEen(tail, acc + 1)
-        case _ :: tail             => hoeveelheidHondenZijnEen(tail, acc)
+        case Hond(_, _, 1) :: tail => hoeveelHeidHondenZijnEen(tail, acc + 1)
+        case _ :: tail             => hoeveelHeidHondenZijnEen(tail, acc)
         case Nil                   => acc
       }
 
