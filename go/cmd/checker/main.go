@@ -1,33 +1,34 @@
 package main
 
 import (
+	"fmt"
 	"sync"
 
 	"github.com/wesleyklop/icpt/go/v2/internal/pkg/input"
 )
 
 func main() {
+	data := input.AskForInput()
+	results := make(chan input.Result, len(data))
+
 	wg := sync.WaitGroup{}
 
-	data := input.AskForInput()
-	results := make(chan input.Result, 5)
-
+	wg.Add(len(data))
 	for _, inp := range data {
-		wg.Add(1)
 		go func(inp input.Input) {
 			defer wg.Done()
 			results <- inp.Validate()
 		}(inp)
 	}
-
 	wg.Wait()
+
 	close(results)
 
 	for result := range results {
 		if result.Valid {
-			println(result.Unit, "is valid")
+			fmt.Println(result.Unit, "is valid")
 		} else {
-			println(result.Unit, "is invalid")
+			fmt.Println(result.Unit, "is invalid")
 		}
 	}
 }
