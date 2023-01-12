@@ -17,7 +17,7 @@ class DataTypeTests extends AnyFlatSpec with should.Matchers {
     Hond("Buddy", "Labrador", 1)
   )
 
-  "De functie hoeveelheid honden" should " kloppen " in {
+  "De functie hoeveelheid honden" should "kloppen" in {
     hoeveelheidHonden(data) should be(3)
   }
 
@@ -25,11 +25,11 @@ class DataTypeTests extends AnyFlatSpec with should.Matchers {
     hoeveelHeidHondenZijnEen(data) should be(2)
   }
 
-  "de functie totale leeftijd honden " should " kloppen " in {
+  "de functie totale leeftijd honden" should "kloppen" in {
     totaleLeeftijdHonden(data) should be(13)
   }
 
-  "de functie totale leeftijd labradors" should " kloppen " in {
+  "de functie totale leeftijd labradors" should "kloppen" in {
     totaleLeeftijdLabradors(data) should be(12)
   }
 }

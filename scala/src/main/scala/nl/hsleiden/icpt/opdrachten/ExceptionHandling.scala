@@ -9,7 +9,7 @@ object ExceptionHandling {
     * @return
     */
   def division(lh: Int, rh: Int): Either[String, Int] = {
-    if (rh == 0) Left("Infinity") else Right(lh / rh)
+    if (rh == 0) Left("Kan niet delen door nul") else Right(lh / rh)
   }
 
   /** Voer de bovenstaande divisie methode uit. Incrementeer dit resultaat met 1
@@ -28,7 +28,7 @@ object ExceptionHandling {
     * @return
     */
   def appendHi(name: String): Either[String, String] = {
-    if (name.isEmpty) Left("Name is empty") else Right("hello " + name)
+    if (name.isEmpty) Left("Naam is leeg") else Right("hallo " + name)
   }
 
   /** Doe de appendHi en doe dan daarna gelijk toUpperCase. Gebruik hier de map

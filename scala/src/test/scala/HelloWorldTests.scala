@@ -9,7 +9,7 @@ import org.scalatest.matchers.should
 
 class HelloWorldTests extends AnyFlatSpec with should.Matchers {
 
-  "Append hi " should " moet hallo voor input plakken" in {
+  "Append hi" should "moet hallo voor input plakken" in {
     appendHi("Heiko") should be("hallo Heiko")
   }
 
@@ -25,7 +25,7 @@ class HelloWorldTests extends AnyFlatSpec with should.Matchers {
     maakPositief(-1) should be(1)
   }
 
-  "Maak positief" should "Een positief getal positief houden " in {
+  "Maak positief" should "Een positief getal positief houden" in {
     maakPositief(1) should be(1)
   }
 

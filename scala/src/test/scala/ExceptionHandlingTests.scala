@@ -23,7 +23,7 @@ class ExceptionHandlingTests extends AnyFlatSpec with should.Matchers {
     divisionAddOne(9, 3) should be(Right((9 / 3) + 1))
   }
 
-  "DivisionaddOne" should "Left geven met fout 'Kan niet delen door nul' bij delen door nul " in {
+  "DivisionaddOne" should "Left geven met fout 'Kan niet delen door nul' bij delen door nul" in {
     divisionAddOne(1, 0) should be(Left("Kan niet delen door nul"))
   }
 
@@ -31,7 +31,7 @@ class ExceptionHandlingTests extends AnyFlatSpec with should.Matchers {
     appendHi("") should be(Left("Naam is leeg"))
   }
 
-  "AppendHi" should " hallo voor een naam zetten" in {
+  "AppendHi" should "hallo voor een naam zetten" in {
     appendHi("Heiko") should be(Right("hallo Heiko"))
   }
 

@@ -9,7 +9,7 @@ object HelloWorld {
     * @return
     */
   def appendHi(name: String): String = {
-    "hello" + name
+    "hallo " + name
   }
 
   /** Maak de functie af. Maak het getal n negatief. Als het getal al negatief
@@ -18,7 +18,7 @@ object HelloWorld {
     * @return
     */
   def maakNegatief(n: Int): Int = {
-    n * -1
+    if n < 0 then n else n * -1
   }
 
   /** Maak de functie af. Maak het getal n positief. Als het getal al positief
