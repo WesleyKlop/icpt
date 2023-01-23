@@ -1,8 +1,12 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
 
+function readDirectoryEntries(folder) {
+  return fs.readdir(folder, { encoding: 'utf-8', withFileTypes: true })
+}
+
 export async function* discoverTestFiles(folder) {
-  const entries = await fs.readdir(folder, { encoding: 'utf-8', withFileTypes: true })
+  const entries = await readDirectoryEntries(folder)
 
   for (const entry of entries) {
     const fullPath = path.resolve(folder, entry.name)

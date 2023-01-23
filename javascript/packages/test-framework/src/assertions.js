@@ -50,3 +50,7 @@ export async function assertAsyncThrows(fn, expectedCatch) {
     }
   }
 }
+
+export function abort() {
+  throw new AbortError()
+}

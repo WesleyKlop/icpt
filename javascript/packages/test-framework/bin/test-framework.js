@@ -8,7 +8,7 @@ import { createTestContext } from '../src/context.js'
 import { executeTestsInContext } from '../src/runner.js'
 
 if ((await isMain(import.meta.url)) === true && cluster.isPrimary) {
-  const whereToDiscoverTests = process.argv[2]
+  const whereToDiscoverTests = process.argv[2] ?? '.'
   await startTestSuite(path.resolve('.', whereToDiscoverTests))
 }
 

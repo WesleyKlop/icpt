@@ -6,5 +6,8 @@
   },
   "bin": {
     "teller": "./bin/teller.js"
+  },
+  "scripts": {
+    "test": "test-framework "
   }
 }

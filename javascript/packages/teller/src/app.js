@@ -63,7 +63,7 @@ export const formatParts = (parts) =>
     'minuten',
   )} en ${format(parts.seconds, 'seconde', 'seconden')}`
 
-export const main = async () => {
+export async function main() {
   const input = await getUserInput()
 
   const parts = calculate(input)

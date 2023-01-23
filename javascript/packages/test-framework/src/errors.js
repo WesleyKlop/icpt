@@ -12,3 +12,9 @@ export class DidNotThrowError extends TestError {
     super('Expected function to throw, but it did not.')
   }
 }
+
+export class AbortError extends Error {
+  constructor() {
+    super('Aborted')
+  }
+}

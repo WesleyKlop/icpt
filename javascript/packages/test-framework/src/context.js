@@ -7,9 +7,13 @@ export const it = (name, test, options) => {
   currentTestContext.tests.add([name, test, options])
 }
 
+it.skip = (name, test, options) => {
+  it(name, test, { ...options, skip: true })
+}
+
 it.each = (argsList) => (name, test, options) => {
   for (const args of argsList) {
-    currentTestContext.tests.add([name, test, { ...options, args }])
+    it(name, test, { ...options, args })
   }
 }
 
@@ -24,4 +28,16 @@ export async function createTestContext(file) {
   await import(file)
   // So we can use that context later.
   return currentTestContext
+}
+
+outer: for (let i = 0; i < 3; i++) {
+  inner: for (let j = 0; j < 3; j++) {
+    console.log(`outer: ${i}, inner: ${j}`)
+    if (i === 1 && j === 1) {
+      break inner
+    }
+    if (i === 2 && j === 2) {
+      break outer
+    }
+  }
 }
