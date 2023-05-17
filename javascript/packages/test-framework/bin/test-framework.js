@@ -10,9 +10,7 @@ import { executeTestsInContext } from '../src/runner.js'
 if ((await isMain(import.meta.url)) === true && cluster.isPrimary) {
   const whereToDiscoverTests = process.argv[2] ?? '.'
   await startTestSuite(path.resolve('.', whereToDiscoverTests))
-}
-
-if (cluster.isWorker) {
+} else if (cluster.isWorker) {
   process.send({ type: 'ready' })
   process.on('message', async (message) => {
     if (message.type === 'exec-test') {
