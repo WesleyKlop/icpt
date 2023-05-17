@@ -1,4 +1,4 @@
-import { TestError } from './errors.js'
+import { TestError, AbortError, AssertionError } from './errors.js'
 import { TestContext } from './test.js'
 
 export async function runTestFile(name, test, options = {}) {
@@ -15,9 +15,9 @@ export async function runTestFile(name, test, options = {}) {
     }
     process.stderr.write('F')
     // if (err instanceof AssertionError) {
-    // console.error(`[${name}]`, err.message)
-    // console.log(' - expected:', err.a)
-    // console.log(' -   actual:', err.b)
+    //   console.error(`[${name}]`, err.message)
+    //   console.log(' - expected:', err.a)
+    //   console.log(' -   actual:', err.b)
     // }
     if (!(err instanceof TestError)) {
       throw err
