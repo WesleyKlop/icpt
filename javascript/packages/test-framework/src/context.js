@@ -29,15 +29,3 @@ export async function createTestContext(file) {
   // So we can use that context later.
   return currentTestContext
 }
-
-outer: for (let i = 0; i < 3; i++) {
-  inner: for (let j = 0; j < 3; j++) {
-    console.log(`outer: ${i}, inner: ${j}`)
-    if (i === 1 && j === 1) {
-      break inner
-    }
-    if (i === 2 && j === 2) {
-      break outer
-    }
-  }
-}
