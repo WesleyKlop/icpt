@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/wesleyklop/icpt/go/v2/internal/pkg/input"
+	"github.com/wesleyklop/icpt/go/v2/internal/input"
 )
 
 func main() {

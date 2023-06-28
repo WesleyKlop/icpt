@@ -6,8 +6,7 @@ func GetUserInput(message string) int {
 	for {
 		fmt.Print(message)
 		var input int
-		_, err := fmt.Scan(&input)
-		if err == nil {
+		if _, err := fmt.Scan(&input); err == nil {
 			return input
 		}
 		fmt.Println("Invalid input. Please enter a valid integer.")
