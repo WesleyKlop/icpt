@@ -6,9 +6,8 @@ void createInstruction(string message, Triangle.TriangleModification instruction
 {
     int output;
     do
-    {
         Console.Write(message + " ");
-    } while (!int.TryParse(Console.ReadLine(), out output));
+    while (!int.TryParse(Console.ReadLine(), out output));
     instructions.Add((instruction, output));
 }
 
@@ -24,7 +23,7 @@ var Menu = new Dictionary<string, MenuOption>()
     {"0", () => createInstruction("How much width do you want to add?", subject.AddWidth)},
     {"1", () => createInstruction("How much height do you want to add?", subject.AddHeight)},
     {"2", () => createInstruction("How much size do you want to add?", subject.AddSize)},
-    { "3", () => { isAskingQuestions = false; }}
+    {"3", () => { isAskingQuestions = false; }}
 };
 
 #pragma warning disable CS8604 // this is expected and handled behavior
@@ -63,13 +62,4 @@ foreach (var (instruction, val) in instructions)
 {
     instruction(val);
     printTriangleInfo(subject);
-}
-
-for (int h = 0; h < subject.Height; h++)
-{
-    for (int w = subject.Width - h; w <= subject.Width; w++)
-    {
-        Console.Write("#");
-    }
-    Console.Write("\n");
 }
