@@ -57,10 +57,19 @@ Kies optie:
 }
 #pragma warning restore CS8604
 
+
 // Execute all instructions and show the progress between each step.
-printTriangleInfo(subject);
 foreach (var (instruction, val) in instructions)
 {
     instruction(val);
     printTriangleInfo(subject);
+}
+
+for (int h = 0; h < subject.Height; h++)
+{
+    for (int w = subject.Width - h; w <= subject.Width; w++)
+    {
+        Console.Write("#");
+    }
+    Console.Write("\n");
 }

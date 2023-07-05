@@ -30,12 +30,26 @@ steps/%.s: steps/%.i
 	gcc -S $< -o $@
 
 steps/%.o: steps/%.s
-	gcc -c $< -o $@
+	as $< -o $@
 
+ifeq ($(shell uname), Darwin)
 bin/%: steps/%.o bin
 	ld \
 		-L /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/lib \
 		-l System \
 		-o $@ \
-	$<
+		$<
+else
+bin/%: steps/%.o bin
+	ld -lc \
+		-o $@ \
+		--dynamic-linker /lib64/ld-linux-x86-64.so.2 \
+		/usr/lib/x86_64-linux-gnu/crti.o \
+		/usr/lib/x86_64-linux-gnu/crtn.o \
+		/usr/lib/x86_64-linux-gnu/crt1.o \
+		/usr/lib/x86_64-linux-gnu/libc_nonshared.a \
+		$<
+endif
+
+
 
