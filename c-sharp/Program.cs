@@ -21,13 +21,12 @@ var isAskingQuestions = true;
 var Menu = new Dictionary<string, MenuOption>()
 {
     {"0", () => createInstruction("How much width do you want to add?", subject.AddWidth)},
-    {"1", () => createInstruction("How much height do you want to add?", subject.AddHeight)},
-    {"2", () => createInstruction("How much size do you want to add?", subject.AddSize)},
-    {"3", () => { isAskingQuestions = false; }}
+    {"1", () => createInstruction("How much height do you want to add?", instruction: subject.AddHeight)},
+    {"2", () => createInstruction(instruction: subject.AddSize, message: "How much size do you want to add?")},
+    {"3", () => { isAskingQuestions = false; }},
 };
 
-#pragma warning disable CS8604 // this is expected and handled behavior
-while (isAskingQuestions)
+string PrintMenuAndGetChoice()
 {
     Console.WriteLine(@"
 Kies optie:
@@ -37,29 +36,27 @@ Kies optie:
 3. Done
 ".Trim());
     var choice = Console.ReadLine();
-
-    try
-    {
-        Menu[choice]();
-    }
-    catch (KeyNotFoundException)
-    {
-        // If the user makes an invalid choice, just continue.
-        Console.WriteLine("Unknown option chosen");
-        continue;
-    }
-    catch (ArgumentNullException)
+    if (choice == null)
     {
         Console.WriteLine("Failed to receive input. ");
         Environment.Exit(1);
     }
+    return choice;
 }
-#pragma warning restore CS8604
 
+while (isAskingQuestions)
+{
+    var choice = PrintMenuAndGetChoice();
+
+    if (Menu.ContainsKey(choice))
+        Menu[choice]();
+    else
+        Console.WriteLine("Unknown option chosen");
+}
 
 // Execute all instructions and show the progress between each step.
-foreach (var (instruction, val) in instructions)
+foreach (var (executeInstruction, amount) in instructions)
 {
-    instruction(val);
+    executeInstruction(amount);
     printTriangleInfo(subject);
 }
