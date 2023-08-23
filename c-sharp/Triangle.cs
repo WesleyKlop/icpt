@@ -1,6 +1,6 @@
 class Triangle
 {
-    public delegate void TriangleModification(int amount);
+    public delegate void Modification(int amount);
     public int Width { get; private set; }
     public int Height { get; private set; }
 

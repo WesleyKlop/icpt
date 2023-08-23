@@ -1,14 +1,17 @@
 ﻿// These are the instructions to execute on the subject later
-var instructions = new List<(Triangle.TriangleModification, int)>();
+var instructions = new List<(Triangle.Modification, int)>();
 
 // Asks for a valid number (both positive / negative) and appends the instruction
-void createInstruction(string message, Triangle.TriangleModification instruction)
+MenuOption createInstruction(string message, Triangle.Modification instruction)
 {
-    int output;
-    do
-        Console.Write(message + " ");
-    while (!int.TryParse(Console.ReadLine(), out output));
-    instructions.Add((instruction, output));
+    return () =>
+    {
+        int output;
+        do
+            Console.Write(message + " ");
+        while (!int.TryParse(Console.ReadLine(), out output));
+        instructions.Add((instruction, output));
+    };
 }
 
 // Output the width and height of a triangle
@@ -18,11 +21,11 @@ var subject = new Triangle(0, 0);
 var isAskingQuestions = true;
 
 // These are the possible options in the main menu.
-var Menu = new Dictionary<string, MenuOption>()
+var menu = new Dictionary<string, MenuOption>()
 {
-    {"0", () => createInstruction("How much width do you want to add?", subject.AddWidth)},
-    {"1", () => createInstruction("How much height do you want to add?", instruction: subject.AddHeight)},
-    {"2", () => createInstruction(instruction: subject.AddSize, message: "How much size do you want to add?")},
+    {"0",  createInstruction("How much width do you want to add?", subject.AddWidth)},
+    {"1",  createInstruction("How much height do you want to add?", instruction: subject.AddHeight)},
+    {"2",  createInstruction(instruction: subject.AddSize, message: "How much size do you want to add?")},
     {"3", () => { isAskingQuestions = false; }},
 };
 
@@ -48,8 +51,8 @@ while (isAskingQuestions)
 {
     var choice = PrintMenuAndGetChoice();
 
-    if (Menu.ContainsKey(choice))
-        Menu[choice]();
+    if (menu.ContainsKey(choice))
+        menu[choice]();
     else
         Console.WriteLine("Unknown option chosen");
 }
