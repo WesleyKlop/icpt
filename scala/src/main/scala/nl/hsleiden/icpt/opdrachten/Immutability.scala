@@ -19,7 +19,8 @@ object Immutability {
   }
 
   /** Met deze functie maken we onze eigen machten verheffen. Java (Math.pow)
-    * Doe dit recursief. * Bonuspunten. Zorg dat deze functie geannoteerd kan
+    * Doe dit recursief. 
+    * Bonuspunten. Zorg dat deze functie geannoteerd kan
     * worden met @tailrec
     * @param n
     * @return
